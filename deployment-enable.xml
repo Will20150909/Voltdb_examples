@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<deployment>
+    <cluster hostcount="1" kfactor="0" />
+    <httpd enabled="true">
+        <jsonapi enabled="true" />
+    </httpd>
+    <import>
+        <configuration type="kafka" format="csv" enabled="true">
+          <property name="brokers">localhost:9092</property>
+          <property name="topics">card_swipes</property>
+          <property name="procedure">CardSwipe</property>
+        </configuration>
+        <configuration type="kafka" format="csv" enabled="true">
+          <property name="brokers">localhost:9092</property>
+          <property name="topics">train_activity</property>
+          <property name="procedure">TrainActivity</property>
+        </configuration>
+    </import>
+    <export>
+    <!-- add by dhx -->
+<!-- 	<configuration target="oldactivity" enabled="true" type="file">
+		<property name="type">csv</property>
+		<property name="nonce">oldactivity</property>
+		
+	</configuration>-->
+	<configuration target="oldactivity" enabled="true" type="jdbc">
+		<property name="jdbcurl">jdbc:mysql://localhost:3306/test_db</property>
+		<property name="jdbcuser">user</property>
+		<property name="jdbcpassword">@Dministrat0r</property>
+		<property name="jdbcdriver">com.mysql.cj.jdbc.Driver</property>
+		<property name="skipinternals">true</property>
+		
+<!--		<property name="schema">activity</property> -->
+	</configuration>
+	</export>
+    <commandlog enabled="false" />
+</deployment>
