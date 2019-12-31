@@ -1,5 +1,9 @@
 # Fraud Detection Example Application
 
+new feature
+
+export data to mysql regular and import it from mysql when request history data from webpage
+
 Use Case
 --------
 This application demonstrates how VoltDB can ingest a stream of data making real time decisions such as fraud detection simply by using the power of SQL.
